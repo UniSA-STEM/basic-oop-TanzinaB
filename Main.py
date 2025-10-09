@@ -1,8 +1,8 @@
 """
 File: main.py
-Description: <A brief description of this Python module.>
-Author: <full name>
-ID: <student_id>
-Username: <username>
+Description: This is the main code file
+Author: Tanzina Billah
+ID: 110458303
+Username: bilty009
 This is my own work as defined by the University's Academic Misconduct Policy.
 """
