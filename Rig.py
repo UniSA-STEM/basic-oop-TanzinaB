@@ -19,3 +19,18 @@ class Rig:
       Asset("Data Spike", "Used to attack other rigs"),
       Asset("Removable Drive", "Used to extract unsecured assets")
     ]
+def take_hit(self):
+  pass
+
+def repair(self):
+  pass
+
+def upgrade(self):
+  pass
+
+def condition(self):
+  pass
+
+def __str__(self):
+  stored = -----
+  return f"Rig: {self.name}, Condition: {self.condition())}. Storage: {stored}"
