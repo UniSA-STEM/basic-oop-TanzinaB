@@ -7,6 +7,7 @@ Username: bilty009
 This is my own work as defined by the University's Academic Misconduct Policy.
 """
 from asset import Asset
+from rig import Rig
 
 class Hacker:
   def __init__(self. name):
