@@ -54,13 +54,43 @@ class Hacker:
         return
 
   def encrypt_asset(self, asset_name):
-    pass
+      has_chip = any(a.name == "Security Chip" for a in self.inventory)
+      if not has_chip:
+          print(f"{self.name} has no Security Chip!")
+          return
+
+      for a in self.inventory:
+          if a.name == asset_name:
+              a.encrypted = True
+              print(f"{self.name} encrypted {asset_name}.")
+              return
 
   def decrypt_asset(self, asset_name):
-    pass
+      has_chip = any(a.name == "Security Chip" for a in self.inventory)
+      if not has_chip:
+          print(f"{self.name} has no Security Chip!")
+          return
+
+      for a in self.inventory:
+          if a.name == asset_name and a.encrypted:
+              a.encrypted = False
+              print(f"{self.name} decrypted {asset_name}.")
+              return
+
+      print(f"{asset_name} not found or not encrypted.")
 
   def upgrade_rig(self):
-    pass
+      if self.rig is None:
+          print(f"{self.name} has no rig to upgrade!")
+          return
+
+      for a in self.inventory:
+          if a.name == "Hardware Patch":
+              self.inventory.remove(a)
+              self.rig.upgrade()
+              return
+
+      print(f"{self.name} has no Hardware Patch!")
 
   def __str__(self):
     inv = -----

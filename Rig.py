@@ -20,16 +20,32 @@ class Rig:
       Asset("Removable Drive", "Used to extract unsecured assets")
     ]
 def take_hit(self):
-  pass
+    self.damage += 1
+    print(f"{self.name} took a hit! Damage = {self.damage}")
+
+    if self.damage >= 2 + self.upgrade_level:
+        self.broken = True
+        print(f"{self.name} is broken!")
 
 def repair(self):
-  pass
+    if self.broken:
+        self.broken = False
+        self.damage = 0
+        print(f"{self.name} has been repaired!")
+    else:
+        print(f"{self.name} does not need repair.")
 
 def upgrade(self):
-  pass
+    self.upgrade_level += 1
+    print(f"{self.name} upgraded to Level {self.upgrade_level}!")
 
 def condition(self):
-  pass
+    if self.broken:
+        return f"Broken (Level {self.upgrade_level})"
+    elif self.damage == 0:
+        return f"Pristine (Level {self.upgrade_level})"
+    else:
+        return f"Damaged ({self.damage}) (Level {self.upgrade_level})"
 
 def __str__(self):
   stored = -----
