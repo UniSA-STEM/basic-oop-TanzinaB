@@ -19,8 +19,8 @@ class Asset:
     # This method returns the description of the asset
     # If the asset is encrypted, that is shown in the text
 
-  def __str__(self):
-    if self.encrypted:
-      return f"{self.name}: {self.description} [Encrypted]"
-    else:
-      return f"{self.name}: {self.description}"
+    def __str__(self):
+        if self.encrypted:
+            return f"{self.name}: {self.description} [Encrypted]"
+        else:
+            return f"{self.name}: {self.description}"

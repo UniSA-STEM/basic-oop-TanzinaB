@@ -17,13 +17,41 @@ class Hacker:
     self.trace_level = 0
 
   def acquire_rig(self):
-    pass
+    """Buy a rig using a CryptoToken"""
+    for a in self.inventory:
+        if a name == "CryptoToken":
+            self.inventory.remove(a)
+            self.rig = Rig(self.name)
+            print(f"(self.name) has acquired a rig!")
+            return
+        print(f"(self.name) has no CryptoToken to buy a rig.")
 
   def attack(self, target):
-    pass
+    if self.rig is None:
+        print(f"{self.name} has no rig to attack from!")
+        return
+
+    if self.trace_level > 5:
+        print(f"{self.name} is too exposed to attack!")
+        return
+
+    spike = None
+    for a in self.rig.inventory:
+        if a.name == "Data Spike":
+            spike = a
+            break
+        if spike is None:
+            print(f"{self.name} has no Data Spikes")
+            return
 
   def extract_assets(self, target):
-    pass
+    if self.trace > 5:
+        print(f"{self.name} is too exposed to extract assets!")
+        return
+
+    if not target.rig.broken:
+        print(f"{target.name}'s rig is not broken")
+        return
 
   def encrypt_asset(self, asset_name):
     pass
