@@ -6,8 +6,8 @@ ID: 110458303
 Username: bilty009
 This is my own work as defined by the University's Academic Misconduct Policy.
 """
-from hacker import Hacker
-from asset import Asset
+from Hacker import Hacker
+from Asset import Asset
 
 h1 = Hacker("NeonRaven")
 h2 = Hacker("CyberWolf")
@@ -36,3 +36,4 @@ h1.decrypt_asset("Security Chip")
 
 print(h1)
 print(h2)
+
