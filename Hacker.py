@@ -28,7 +28,6 @@ class Hacker:
         """Buy a rig using a CryptoToken"""
 
         #Look for a CryptoToken in the inventory
-
         for a in self.inventory:
             if a.name == "CryptoToken":
                 #Remove the CryptoToken from the inventory and create a rig
