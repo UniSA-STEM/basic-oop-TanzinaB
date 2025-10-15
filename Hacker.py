@@ -10,7 +10,7 @@ from asset import Asset
 from rig import Rig
 
 class Hacker:
-  def __init__(self. name):
+  def __init__(self, name):
     self.name = name
     self.inventory = [Asset("CryptoToken", "Used to buy or repair rigs")]
     self.rig = None
@@ -19,7 +19,7 @@ class Hacker:
   def acquire_rig(self):
     """Buy a rig using a CryptoToken"""
     for a in self.inventory:
-        if a name == "CryptoToken":
+        if a.name == "CryptoToken":
             self.inventory.remove(a)
             self.rig = Rig(self.name)
             print(f"(self.name) has acquired a rig!")
@@ -93,6 +93,6 @@ class Hacker:
       print(f"{self.name} has no Hardware Patch!")
 
   def __str__(self):
-    inv = -----
+    inv = [a.name for a in self.inventory]
     rig_name = self.rig.name if self.rig else "None"
     return f"Hacker: {self.name}, Rig: {rig_name}, Trace Level: {self.trace_level}, Inventory: {inv}"
