@@ -6,6 +6,9 @@ ID: 110458303
 Username: bilty009
 This is my own work as defined by the University's Academic Misconduct Policy.
 """
+# Hacker.py
+# The Hacker class represents a person who can buy rigs, attack others and use assets.
+
 from Asset import Asset
 from Rig import Rig
 
