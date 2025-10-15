@@ -52,8 +52,8 @@ class Hacker:
         spike = None
         for a in self.rig.storage:
             if a.name == "Data Spike":
-            spike = a
-            break
+                spike = a
+                break
 
         if spike is None:
             print(f"{self.name} has no Data Spikes")
@@ -70,6 +70,7 @@ class Hacker:
         self.trace_level += 1
 
     def extract_assets(self, target):
+        """Extract assets from a broken rig using a Removable Drive"""
         if self.trace > 5:
             print(f"{self.name} is too exposed to extract assets!")
             return
@@ -77,6 +78,30 @@ class Hacker:
         if not target.rig.broken:
             print(f"{target.name}'s rig is not broken")
             return
+
+        #Look for a Removable Drive
+        drive = None
+        for a in self.rig.storage:
+            if a.name == "Removable Drive":
+                drive = a
+                break
+
+        if drive is None:
+            print(f"{self.name} has no Removable Drive to extract")
+            return
+
+        #Use the drive
+        self.rig.storage.remove(drive)
+        print(f"{self.name} uses a Removable Drive to extract assets")
+
+        #Take all unsecured (unencrypted) assets
+        for a in target.rig.storage[:]:
+            if not a.encrypted:
+                self.inventory.append(a)
+                target.rig.storage.remove(a)
+
+        #Trace level increases
+        self.trace_level += 2
 
     def encrypt_asset(self, asset_name):
         has_chip = any(a.name == "Security Chip" for a in self.inventory)
