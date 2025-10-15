@@ -104,23 +104,29 @@ class Hacker:
         self.trace_level += 2
 
     def encrypt_asset(self, asset_name):
+        """Hacker encrypts an asset if there is a Security Chip"""
+        #Check if hacker has a Security Chip
         has_chip = any(a.name == "Security Chip" for a in self.inventory)
         if not has_chip:
             print(f"{self.name} has no Security Chip!")
             return
 
+        #Find the asset to encrypt
         for a in self.inventory:
             if a.name == asset_name:
                 a.encrypted = True
                 print(f"{self.name} encrypted {asset_name}.")
                 return
+        print(f"{asset_name} not found in inventory")
 
     def decrypt_asset(self, asset_name):
+        """Hacker decrypts an asset """
         has_chip = any(a.name == "Security Chip" for a in self.inventory)
         if not has_chip:
             print(f"{self.name} has no Security Chip!")
             return
 
+        #Find the encrypted asset to decrypt
         for a in self.inventory:
             if a.name == asset_name and a.encrypted:
                 a.encrypted = False
