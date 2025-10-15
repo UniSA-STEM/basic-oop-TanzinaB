@@ -39,6 +39,7 @@ class Hacker:
         print(f"(self.name) has no CryptoToken to buy a rig.")
 
     def attack(self, target):
+        """Use a Data Spike to damage another hacker's rig."""
         if self.rig is None:
             print(f"{self.name} has no rig to attack from!")
             return
@@ -47,22 +48,26 @@ class Hacker:
             print(f"{self.name} is too exposed to attack!")
             return
 
-    spike = None
-    for a in self.rig.storage:
-        if a.name == "Data Spike":
+        #Find a Data Spike(remove in storage
+        spike = None
+        for a in self.rig.storage:
+            if a.name == "Data Spike":
             spike = a
             break
 
-    if spike is None:
-        print(f"{self.name} has no Data Spikes")
-        return
+        if spike is None:
+            print(f"{self.name} has no Data Spikes")
+            return
 
-    self.rig.storage.remove(spike)
-    print(f"(self.name) launches a Data Spike at {target.name}'s rig!")
+        #Use the Data Spike(remove from storage)
+        self.rig.storage.remove(spike)
+        print(f"(self.name) launches a Data Spike at {target.name}'s rig!")
 
-    target.rig.take_hit()
+        #The target rig takes damage
+        target.rig.take_hit()
 
-    self.trace_level += 1
+        #Increase trace level slightly
+        self.trace_level += 1
 
     def extract_assets(self, target):
         if self.trace > 5:
