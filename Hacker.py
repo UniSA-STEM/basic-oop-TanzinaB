@@ -136,6 +136,7 @@ class Hacker:
         print(f"{asset_name} not found or not encrypted.")
 
     def upgrade_rig(self):
+        """Upgrade the rig with a Hardware Patch"""
         if self.rig is None:
             print(f"{self.name} has no rig to upgrade!")
             return
@@ -148,6 +149,7 @@ class Hacker:
         print(f"{self.name} has no Hardware Patch!")
 
     def __str__(self):
+        """Show the hacker's details neatly"""
         inv = [a.name for a in self.inventory]
         rig_name = self.rig.name if self.rig else "None"
         return f"Hacker: {self.name}, Rig: {rig_name}, Trace Level: {self.trace_level}, Inventory: {inv}"
