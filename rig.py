@@ -6,6 +6,8 @@ ID: 110458303
 Username: bilty009
 This is my own work as defined by the University's Academic Misconduct Policy.
 """
+
+# rig.py
 from asset import Asset     # Imports the Asset class so rigs can store assets
 
 class Rig:
