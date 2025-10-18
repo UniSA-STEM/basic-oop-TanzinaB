@@ -10,55 +10,58 @@ This is my own work as defined by the University's Academic Misconduct Policy.
 # main.py
 # Main test program for the Cyberpunk Hacker Simulation
 
-# Print a header to indicate the start of the simulation.
+from hacker import Hacker
+from asset import Asset
+
+# Prints a header to indicate the start of the simulation.
 print("\n==========================")
 print("CYBERPUNK HACKER SIMULATION START")
 print("==========================")
 
-# === Create two hackers ===
-# Instantiate Hacker object named "NeonRaven".
+# === Creates two hackers ===
+# Instantiates Hacker object named "NeonRaven".
 h1 = Hacker("NeonRaven")
-# Instantiate Hacker object named "CyberWolf".
+# Instantiates Hacker object named "CyberWolf".
 h2 = Hacker("CyberWolf")
 
-# === Acquire rigs for each hacker ===
+# === Acquires rigs for each hacker ===
 # NeonRaven attempts to buy a rig (consumes CryptoToken if present).
 h1.acquire_rig()
 # CyberWolf attempts to buy a rig.
 h2.acquire_rig()
 
-# Print current hacker summaries.
+# Prints current hacker summaries.
 print("\n-- Current Hackers --")
 print(h1)  # Uses Hacker.__str__ to show basic status.
 print(h2)
 
-# === Give NeonRaven some extra assets ===
-# Add a Security Chip to NeonRaven's inventory.
+# === Gives NeonRaven some extra assets ===
+# Adds a Security Chip to NeonRaven's inventory.
 h1.inventory.append(Asset("Security Chip", "Used to encrypt/decrypt"))
-# Add a Hardware Patch to NeonRaven's inventory.
+# Adds a Hardware Patch to NeonRaven's inventory.
 h1.inventory.append(Asset("Hardware Patch", "Used to upgrade rigs"))
 
-# === Upgrade rig for NeonRaven ===
+# === Upgrades rig for NeonRaven ===
 print("\n-- Rig Upgrade --")
 # NeonRaven uses the Hardware Patch to upgrade their rig.
 h1.upgrade_rig()
-# Print the rig object to show new condition/level (uses Rig.__str__).
+# Prints the rig object to show new condition/level (uses Rig.__str__).
 print(h1.rig)
 
-# === Attack another hacker ===
+# === Attacks another hacker ===
 print("\n-- Attack Simulation --")
 # NeonRaven launches a Data Spike at CyberWolf's rig.
 h1.attack(h2)
-# Launch a second Data Spike.
+# Launches a second Data Spike.
 h1.attack(h2)
-# Print CyberWolf's rig to show damage/broken status.
+# Prints CyberWolf's rig to show damage/broken status.
 print(h2.rig)
 
-# === Extract unsecured assets if target's rig is broken ===
+# === Extracts unsecured assets if target's rig is broken ===
 print("\n-- Extraction Attempt --")
 # NeonRaven attempts extraction from CyberWolf's rig using a Removable Drive.
 h1.extract_assets(h2)
-# Print NeonRaven's hacker summary to show inventory changes.
+# Prints NeonRaven's hacker summary to show inventory changes.
 print(h1)
 
 # === Encryption & Decryption ===
@@ -68,22 +71,22 @@ h1.encrypt_asset("Security Chip")
 # NeonRaven decrypts it afterward.
 h1.decrypt_asset("Security Chip")
 
-# === Show final status of h1 and h2 ===
-print("\n-- Final Hacker States --")
+# === Shows final status of h1 and h2 ===
+print("\n-- Final Hacker Status --")
 print(h1)
 print(h2)
 
 # ==================================================
-# EDGE CASE TESTS (as requested) - variables h3 and h4
+# EDGE CASE TESTS - variables h3 and h4
 # ==================================================
 
 print("\n==========================")
 print("EDGE CASE 1: Upgrade without a rig")
 print("==========================")
 
-# Create a hacker named Patchless who has not bought a rig.
+# Creates a hacker named Patchless who has not bought a rig.
 h3 = Hacker("Patchless")
-# Try to upgrade when there is no rig: should print an error message.
+# Tries to upgrade when there is no rig: should print an error message.
 h3.upgrade_rig()
 print()  # blank line for readability
 
@@ -95,9 +98,9 @@ print("==========================")
 h4 = Hacker("NoChip")
 # Optionally give NoChip a rig so the output shows rig acquisition (not required for encryption test).
 h4.acquire_rig()
-# Add an asset 'Sensitive Data' to NoChip's inventory to attempt encryption.
+# Adds an asset 'Sensitive Data' to NoChip's inventory to attempt encryption.
 h4.inventory.append(Asset("Sensitive Data", "Very secret"))
-# Attempt to encrypt 'Sensitive Data' without having a Security Chip (should fail).
+# Attempts to encrypt 'Sensitive Data' without having a Security Chip (should fail).
 h4.encrypt_asset("Sensitive Data")
 print()  # blank line for readability
 
@@ -105,7 +108,7 @@ print("\n==========================")
 print("EDGE CASE 3: Launch attack with high trace level")
 print("==========================")
 
-# Recreate h3 and h4 as attacker/defender for clarity in this test.
+# Recreates h3 and h4 as attacker/defender for clarity in this test.
 h3 = Hacker("RiskTaker")
 h4 = Hacker("TargetDummy")
 
@@ -113,16 +116,16 @@ h4 = Hacker("TargetDummy")
 h3.acquire_rig()
 h4.acquire_rig()
 
-# Artificially set the attacker's trace above the safe threshold (use setter method).
+# Artificially sets the attacker's trace above the safe threshold (use setter method).
 h3.set_trace(6)  # using Hacker.set_trace to set trace to 6
-# Print the current trace via getter for confirmation.
+# Prints the current trace via getter for confirmation.
 print(f"{h3.get_name()}'s trace level set to {h3.get_trace()} (too high!)")
 
-# Attempt an attack while trace is too high; action should be blocked.
+# Attempts an attack while trace is too high; action should be blocked.
 h3.attack(h4)
 print()  # blank line for readability
 
-# Lower trace using setter and attempt the attack again (should now succeed).
+# Lowers trace using setter and attempts the attack again (should now succeed).
 h3.set_trace(2)
 print(f"Trace lowered to {h3.get_trace()}, trying again...")
 h3.attack(h4)
@@ -136,31 +139,31 @@ print("\n==========================")
 print("TESTING GETTERS AND SETTERS")
 print("==========================")
 
-# Create a test Asset and demonstrate getters/setters.
+# Creates a test Asset and demonstrate getters/setters.
 asset_test = Asset("CryptoToken", "Used for upgrades")
-# Print its original string form.
+# Prints its original string form.
 print("Original asset:", asset_test)
-# Encrypt via setter method.
+# Encrypts via setter method.
 asset_test.set_encrypted(True)
-# Print the asset's string form now encrypted.
+# Prints the asset's string form now encrypted.
 print("Encrypted asset:", asset_test)
-# Use the asset getters to show values.
+# Uses the asset getters to show values.
 print("Getter test - is_encrypted:", asset_test.is_encrypted())
-# Rename and change description via setters.
+# Renames and changes description via setters.
 asset_test.set_name("Digital Token")
 asset_test.set_description("Virtual currency for hackers")
-# Print updated name and description via getters.
+# Prints updated name and description via getters.
 print("Updated asset info:", asset_test.get_name(), "-", asset_test.get_description())
 
-# Test hacker/rig getters and setters as a small demo.
-# Set a new trace using setter.
+# Tests hacker/rig getters and setters as a small demo.
+# Sets a new trace using setter.
 h1.set_trace(3)
-# Print trace using getter.
+# Prints trace using getter.
 print(f"\n{h1.get_name()}'s new trace level (via getter):", h1.get_trace())
-# Print the rig name via getter on the Rig object.
+# Prints the rig name via getter on the Rig object.
 print(f"Rig name (via getter):", h1.get_rig().get_name())
 
-# Print footer to indicate simulation end.
+# Prints footer to indicate simulation end.
 print("\n==========================")
 print("CYBERPUNK HACKER SIMULATION END")
 print("==========================")
