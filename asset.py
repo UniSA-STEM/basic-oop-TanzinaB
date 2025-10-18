@@ -1,5 +1,5 @@
 """
-File: Asset.py
+File: asset.py
 Description: This is the asset class file
 Author: Tanzina Billah
 ID: 110458303

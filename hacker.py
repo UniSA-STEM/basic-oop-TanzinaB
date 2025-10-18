@@ -1,5 +1,5 @@
 """
-File: Hacker.py
+File: hacker.py
 Description: This is the hacker class file
 Author: Tanzina Billah
 ID: 110458303
@@ -9,8 +9,8 @@ This is my own work as defined by the University's Academic Misconduct Policy.
 # hacker.py
 # The Hacker class represents a person who can buy rigs, attack others and use assets.
 
-from Asset import Asset # Imports asset so hackers can hold assets.
-from Rig import Rig     # Imports rig so hackers can own rigs.
+from asset import Asset # Imports asset so hackers can hold assets.
+from rig import Rig     # Imports rig so hackers can own rigs.
 
 class Hacker:
     def __init__(self, name):

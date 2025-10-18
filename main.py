@@ -11,9 +11,9 @@ from asset import Asset
 
 h1 = Hacker("NeonRaven")
 h2 = Hacker("CyberWolf")
-unitary method worksheet
-h1.acquire_rig(self)
-h2.acquire_rig(self)
+
+h1.acquire_rig()
+h2.acquire_rig()
 
 print(h1)
 print(h2)
@@ -21,7 +21,7 @@ print(h2)
 h1.inventory.append(Asset("Security Chip", "Used to encrypt/decrypt"))
 h1.inventory.append(Asset("Hardware Patch", "Used to upgrade rigs"))
 
-h1.upgrade_rig(self)
+h1.upgrade_rig()
 print(h1.rig)
 
 h1.attack(h2)

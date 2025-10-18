@@ -1,5 +1,5 @@
 """
-File: Rig.py
+File: rig.py
 Description: This is the rig class file
 Author: Tanzina Billah
 ID: 110458303
